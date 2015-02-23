@@ -1,20 +1,19 @@
 // Variables
-$ca-white: #eee;
-$ca-gray-15: #ccc;
-$ca-gray-40: #909090;
-$ca-gray-70: #505050;
-$ca-black: #333;
-$ca-blue: #206BD7;
+$ca-white: #F7F7ED;
+$ca-gray-15: darken($ca-white,15);
+$ca-gray-40: #61685D;
+$ca-black: darken($ca-gray-40,15);
+$ca-blue: #BDDFD1;
 $ca-blue-lighter: lighten($ca-blue,10);
 $ca-blue-darker: darken($ca-blue,10);
-$ca-red: #FF3D2E;
+$ca-red: #E73D37;
 $ca-red-lighter: lighten($ca-red,10);
 
 // Fonts
 @mixin default-font {
 	font-family: 'Source Code Pro', monospace;
 	font-weight: 500;
-	color: $ca-gray-70;
+	color: $ca-black;
 	font-style: normal;
 }
 @mixin header-font {

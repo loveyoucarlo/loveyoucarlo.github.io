@@ -131,7 +131,6 @@ h1 {
 // Forms
 input {
 	@include default-font;
-	@include text-shadow(0 0 1px $ca-gray-70);
 	outline: none;
 	color: $ca-white;
 	background: transparent;
@@ -155,24 +154,10 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	@include control-font;
 	@extend .transition-fast;
 	color: $ca-white;
-	background: $ca-blue;
+	background: $ca-red;
 	padding: 0.55em 1em .45em 1em;
 	&:hover {
-		background: $ca-blue;
-		color: $ca-black;
-	}
-	&.note {
-		color: $ca-black;
-		background: $ca-blue;
-		&:hover {
-			background: $ca-blue-lighter
-		}
-	}
-	&.danger {
-		background: $ca-red;
-		&:hover {
-			background: $ca-red-lighter;
-		}
+		background: $ca-red-lighter;
 	}
 }
 #masthead {
@@ -182,8 +167,8 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	left: 0px;
 	right: 0px;
 	z-index: 1000;
-	background: $ca-gray-70;
-	color: $ca-white;
+	background: $ca-white;
+	color: $ca-black;
 	> * {
 		vertical-align: middle;
 	}
@@ -219,7 +204,6 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	font-size: 1.2em;
 }
 #content {
-	@include text-shadow(0 0 1px $ca-gray-70);
 	@extend .transition-std;
 	padding: calc(1.92rem + 40px) 20px 20px;
 	width: 100%;
