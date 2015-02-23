@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en" ng-app="carloApp">
+
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+		<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300,500,900' rel='stylesheet' type='text/css'>
+		<link href="css/screen.css" media="all" rel="stylesheet" type="text/css" />
+
+		<script src="bin/grunt-combined.js"></script>
+
+		<title>love you carlo</title>
+
+		<base href="/">
+	</head>
+
+	<body id="appcontainer" ng-controller="carloController">
+
+		<div id="masthead">
+			<div class="section pure-g">
+				<h1 class="logo pure-u-1-2">Carl<i class="fa fa-gratipay"></i></h1>
+				<div class="controls pure-u-1-2">
+					<button class="pure-button" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="content" class="view-animate" ng-view></div>
+
+	</body>
+
+</html>

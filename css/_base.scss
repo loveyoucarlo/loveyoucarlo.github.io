@@ -1,0 +1,62 @@
+// Variables
+$ca-white: #eee;
+$ca-gray-15: #ccc;
+$ca-gray-40: #909090;
+$ca-gray-70: #505050;
+$ca-black: #333;
+$ca-blue: #206BD7;
+$ca-blue-lighter: lighten($ca-blue,10);
+$ca-blue-darker: darken($ca-blue,10);
+$ca-red: #FF3D2E;
+$ca-red-lighter: lighten($ca-red,10);
+
+// Fonts
+@mixin default-font {
+	font-family: 'Source Code Pro', monospace;
+	font-weight: 500;
+	color: $ca-gray-70;
+	font-style: normal;
+}
+@mixin header-font {
+	font-weight: 100;
+	text-transform: uppercase;
+	font-size: 3em;
+	margin-bottom: 0;
+}
+@mixin control-font {
+	letter-spacing: .1em;
+	font-weight: 700;
+	font-size: .8em;
+	text-transform: uppercase;
+}
+
+// Mixins
+@mixin zero-height {
+	font-size: 0em;
+	line-height: 0;
+}
+@mixin opacity($opacity-value) {
+	opacity:$opacity-value;
+	filter:alpha(opacity=$opacity-value*100); /* For IE8 and earlier */
+}
+@mixin rotate($degrees) {
+	transform:rotate(#{$degrees}deg);
+	-ms-transform:rotate(#{$degrees}deg); /* IE 9 */
+	-moz-transform:rotate(#{$degrees}deg); /* Firefox */
+	-webkit-transform:rotate(#{$degrees}deg); /* Safari and Chrome */
+	-o-transform:rotate(#{$degrees}deg); /* Opera */
+}
+@mixin box-sizing {
+	box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+}
+
+// Universal Elements
+strong {
+	font-weight: 700;
+}
+.float-fix {
+	clear: both;
+}
