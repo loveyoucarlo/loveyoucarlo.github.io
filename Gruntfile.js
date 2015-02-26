@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         concat: {
             js: {
                 src: [
-                    'js/angular.min.js','js/angular-route.min.js','js/angular-animate.min.js','node_modules/angular-loading-bar/build/loading-bar.min.js','js/controllers.js'
+                    'node_modules/angular-loading-bar/build/loading-bar.min.js','js/controllers.js'
                 ],
                 dest: 'bin/grunt-combined.js'
             }

@@ -13,7 +13,7 @@ var PageSection = function(name, url) {
 carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
 	$routeProvider
 	.when('/', {
-		templateUrl: 'templates/splash.html',
+		templateUrl: '/templates/splash.html',
 		controller: 'carloController',
 		controllerAs: 'splash_page'
 	})
@@ -50,4 +50,23 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 	$scope.isActiveSection = function(tabUrl) {
 		return tabUrl == $scope.currentPageSection;
 	}
-}]);
+}]).directive("scroll", function() {
+	var page = angular.element(window);
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			page.bind('scroll', function(e) {
+				var scrollSpeed = 1.75;
+				var fade = false;
+				if (element.hasClass('scroll-slow')) {
+					scrollSpeed = 1.15;
+					fade = true;
+				}
+				element.css({'margin-top': page[0].pageYOffset/scrollSpeed + 'px'});
+				if (fade) {
+					element.css({'opacity':1-page[0].pageYOffset/640});
+				}
+			});
+		}
+	};
+});

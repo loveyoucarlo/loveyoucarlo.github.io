@@ -36,7 +36,7 @@
   -o-transition: width 350ms;
   transition: width 350ms;
 
-  background: $ca-blue;
+  background: $ca-red;
   position: fixed;
   z-index: 10002;
   top: 0;
@@ -55,10 +55,10 @@
   top: 0;
   height: 2px;
   opacity: .45;
-  -moz-box-shadow: $ca-blue 1px 0 6px 1px;
-  -ms-box-shadow: $ca-blue 1px 0 6px 1px;
-  -webkit-box-shadow: $ca-blue 1px 0 6px 1px;
-  box-shadow: $ca-blue 1px 0 6px 1px;
+  -moz-box-shadow: $ca-red 1px 0 6px 1px;
+  -ms-box-shadow: $ca-red 1px 0 6px 1px;
+  -webkit-box-shadow: $ca-red 1px 0 6px 1px;
+  box-shadow: $ca-red 1px 0 6px 1px;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -77,8 +77,8 @@
   height: 14px;
 
   border:  solid 2px transparent;
-  border-top-color:  $ca-blue;
-  border-left-color: $ca-blue;
+  border-top-color:  $ca-red;
+  border-left-color: $ca-red;
   border-radius: 10px;
 
   -webkit-animation: loading-bar-spinner 400ms linear infinite;

@@ -17,7 +17,6 @@ $ca-red-lighter: lighten($ca-red,10);
 	font-style: normal;
 }
 @mixin header-font {
-	font-weight: 100;
 	text-transform: uppercase;
 	font-size: 3em;
 	margin-bottom: 0;

@@ -26,49 +26,16 @@ h2, h3, h4, h5, h6 {
 	font-weight: 700;
 }
 h1 {
-	font-weight: 200;
+	font-weight: 400;
 	line-height: 1.2;
+	font-size: 3rem;
 }
 .heading {
 	@extend h1;
 	margin: .1em 0;
 	line-height: 1.4;
-	display: inline;
-	[contenteditable] {
-		display: inline-block;
-		white-space: pre;
-		border-bottom: 1px solid $ca-white;
-		vertical-align: 0%;
-		&:hover {
-			color: $ca-blue;
-			border-color: $ca-blue;
-		}
-		&:hover, &:focus, &:active {
-			color: $ca-blue;
-			border-color: $ca-blue;
-		}
-		&:empty:before {
-			width: 1ex;
-			height: 1em;
-		}
-		&:focus{
-			outline: 0;
-		}
-		&.slider-controlled {
-			border-color: transparent;
-		}
-		* {
-			display: inline;
-		}
-		br {
-			display: none;
-		}
-	}
-	[contenteditable="false"] {
-		&:hover {
-			color: $ca-white;
-		}
-	}
+	display: inline-block;
+	position: relative;
 }
 
 // Standard Classes
@@ -101,9 +68,15 @@ h1 {
 .radio-label {
 	cursor: pointer;
 }
+.mobile {
+	display: block;
+}
+.desktop {
+	display: none;
+}
 #loading-bar { 
 	.bar {
-		top: calc(1.92rem + 38px);
+		top: calc(1.92rem + 36px);
 	}
 	.peg {
 		width: 10%;
@@ -137,11 +110,11 @@ input {
 	border: none;
 }
 
-// Desktop
+// General Layout
 body {
 	@include default-font;
-	background: $ca-blue-lighter;
-	color: $ca-white;
+	color: $ca-black;
+	position: relative;
 }
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
     font-family: 'Source Code Pro', monospace;
@@ -159,6 +132,31 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	&:hover {
 		background: $ca-red-lighter;
 	}
+}
+.controls {
+	&.mobile {
+		display: block;
+		background: $ca-black;
+		color: $ca-white;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		z-index: 1;
+		& > ul {
+			list-style: none;
+			& > li {
+				cursor: pointer;
+			}
+		}
+	}
+}
+.content-wrap {
+	@extend .transition-slow;
+	position: relative;
+	z-index: 5;
+	left: 0;
+	background: $ca-blue-lighter;
 }
 #masthead {
 	width: 100%;
@@ -178,6 +176,12 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 		font-weight: 700;
 		line-height: 1.1;
 		margin: 0;
+		i {
+			font-size: 0.65em;
+			display: inline-block;
+			margin-left: .07em;
+			vertical-align: 0.06em;
+		}
 	}
 	.note {
 		font-weight: 900;
@@ -189,6 +193,7 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	}
 	.controls {
 		text-align: right;
+		float: right;
 		button {
 			margin-left: 1em;
 		}
@@ -207,8 +212,8 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	@extend .transition-std;
 	padding: calc(1.92rem + 40px) 20px 20px;
 	width: 100%;
-	height: 100vh;
 	overflow: hidden;
+	position:relative;
 	.wrapper {
 		@include box-sizing;
 		padding: 20px;
@@ -218,7 +223,6 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 #sectionMenu {
 	height: 100%;
 	font-size: 1.6rem;
-	font-weight: 400;
 	background: $ca-blue;
 	position: relative;
 	li {
@@ -240,10 +244,67 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 		}
 	}
 }
+#heart, #heart-background, #heart-text-overlay {
+	height: 100vw;
+}
+#heart, #heart-background {
+	position: absolute;
+	top: calc(1.92rem + 40px);
+	left: 0;
+}
+#heart {
+	width: 100vw;
+	z-index: 5;
+	background-image:
+		-webkit-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-webkit-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-webkit-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
+		-webkit-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
+	background-image:
+		-o-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-o-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-o-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
+		-o-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
+	background-image:
+		-moz-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-moz-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-moz-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
+		-moz-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
+	background-image:
+		radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
+		linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
+	background-size: 50% 50%;
+	background-position: top left, calc(100% - 1px) 0%, 0% calc(100% - 1px), calc(100% - 1px) calc(100% - 1px); // accounts for Chrome rounding errors
+	background-repeat: no-repeat;
+}
+#heart-background {
+	z-index: 0;
+	width: calc(100vw - 40px);
+	height: calc(100vw - 40px);
+	left: 20px;
+	background: transparent url('../images/background.jpg') center center no-repeat;
+	background-size: cover;
+}
+#heart-text-overlay {
+	z-index: 10;
+	position: relative;
+}
+.scroll {
+	@include opacity(1);
+	margin-top: 0;
+}
 
 // Tablet
 @media only screen and (min-width: 1024px) {
 	h1 {
-		font-size: 3rem;
+		font-size: 5rem;
+	}
+	.desktop {
+		display: block;
+	}
+	.mobile {
+		display: none;
 	}
 }
