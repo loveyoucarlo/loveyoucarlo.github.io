@@ -32,8 +32,9 @@ h1 {
 }
 .heading {
 	@extend h1;
+	font-size: 1.5em;
 	margin: .1em 0;
-	line-height: 1.4;
+	line-height: 1.6;
 	display: inline-block;
 	position: relative;
 }
@@ -119,16 +120,20 @@ body {
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
     font-family: 'Source Code Pro', monospace;
 }
+blockquote {
+	margin: 0;
+}
 .section {
 	max-width: 1280px;
 	margin: 0 auto;
+	position: relative;
 }
 .pure-button {
 	@include control-font;
 	@extend .transition-fast;
 	color: $ca-white;
 	background: $ca-red;
-	padding: 0.55em 1em .45em 1em;
+	padding: 0.5em 1em .5em 1em;
 	&:hover {
 		background: $ca-red-lighter;
 	}
@@ -244,35 +249,49 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 		}
 	}
 }
-#heart, #heart-background, #heart-text-overlay {
-	height: 100vw;
+#heart, #heart-background, #heart-bounding-box {
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	max-height: 1280px;
+	max-width: 1280px;
 }
-#heart, #heart-background {
+#heart-bounding-box {
+	position: relative;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+#heart, #heart-background, #heart-text-overlay {
 	position: absolute;
-	top: calc(1.92rem + 40px);
+	margin: auto;
+	top: 12vw;
+	right: 0;
+	bottom: 0;
 	left: 0;
 }
 #heart {
-	width: 100vw;
+	@include box-shadow (0 -12vw 0 0 $ca-blue-lighter, 1px 0 0 0 $ca-blue-lighter, inset -1px 0 0 0 $ca-blue-lighter); // accounts for Chrome rounding errors
 	z-index: 5;
+	max-width: 1284px;
 	background-image:
-		-webkit-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
-		-webkit-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-webkit-radial-gradient(65.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
+		-webkit-radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
 		-webkit-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
 		-webkit-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
 	background-image:
-		-o-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
-		-o-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-o-radial-gradient(65.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
+		-o-radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
 		-o-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
 		-o-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
 	background-image:
-		-moz-radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
-		-moz-radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		-moz-radial-gradient(65.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
+		-moz-radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
 		-moz-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
 		-moz-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
 	background-image:
-		radial-gradient(66.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
-		radial-gradient(33.5% 85.5%, circle, transparent 36%, $ca-blue-lighter 36%),
+		radial-gradient(65.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
+		radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
 		linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
 		linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
 	background-size: 50% 50%;
@@ -280,26 +299,41 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	background-repeat: no-repeat;
 }
 #heart-background {
+	width: calc(100% - 2px); // accounts for Chrome rounding errors
 	z-index: 0;
-	width: calc(100vw - 40px);
-	height: calc(100vw - 40px);
-	left: 20px;
+	top: 0;
 	background: transparent url('../images/background.jpg') center center no-repeat;
 	background-size: cover;
 }
 #heart-text-overlay {
 	z-index: 10;
-	position: relative;
+	top: 4vw;
+	p {
+		margin: 0;
+	}
+}
+.heading-splash {
+	top: .4em;
+	width: 100%;
+	text-align: center;
 }
 .scroll {
 	@include opacity(1);
 	margin-top: 0;
 }
 
-// Tablet
+// Phablet
+@media only screen and (min-width: 800px) {
+	.heading {
+		font-size: 2.5rem;
+		line-height: 1.4;
+	}
+}
+
+// Tablet & Desktop
 @media only screen and (min-width: 1024px) {
-	h1 {
-		font-size: 5rem;
+	.heading {
+		font-size: 4rem;
 	}
 	.desktop {
 		display: block;
