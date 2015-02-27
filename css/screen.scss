@@ -32,7 +32,7 @@ h1 {
 }
 .heading {
 	@extend h1;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin: .1em 0;
 	line-height: 1.6;
 	display: inline-block;
@@ -74,6 +74,12 @@ h1 {
 }
 .desktop {
 	display: none;
+}
+blink {
+	-webkit-animation: blink 1s steps(2, start) infinite;
+	-moz-animation:    blink 1s steps(2, start) infinite;
+	-o-animation:      blink 1s steps(2, start) infinite; 
+	animation:         blink 1s steps(2, start) infinite;
 }
 #loading-bar { 
 	.bar {
@@ -127,6 +133,11 @@ blockquote {
 	max-width: 1280px;
 	margin: 0 auto;
 	position: relative;
+	padding: $ca-pagepad 0;
+	&.alt {
+		@include box-shadow($ca-pagepad 0 0 0 $ca-blue, -$ca-pagepad 0 0 0 $ca-blue);
+		background: $ca-blue;
+	}
 }
 .pure-button {
 	@include control-font;
@@ -165,7 +176,7 @@ blockquote {
 }
 #masthead {
 	width: 100%;
-	padding: 20px;
+	padding: 20px $ca-pagepad;
 	position: fixed;
 	left: 0px;
 	right: 0px;
@@ -199,13 +210,28 @@ blockquote {
 	.controls {
 		text-align: right;
 		float: right;
-		button {
+		.pure-button {
 			margin-left: 1em;
+			background: transparent;
+			color: $ca-black;
+			padding-right: 0;
+			&:hover {
+				color: $ca-gray-40;
+			}
+			&.active {
+				@extend .pure-button;
+				color: $ca-white;
+				background: $ca-red;
+				padding-right: 1em;
+			}
 		}
 	}
 	.control {
 		display: inline-block;
 		margin-left: .5em;
+	}
+	.section {
+		padding: 0;
 	}
 }
 .cta-button {
@@ -215,13 +241,13 @@ blockquote {
 }
 #content {
 	@extend .transition-std;
-	padding: calc(1.92rem + 40px) 20px 20px;
+	padding: calc(1.92rem + 40px) $ca-pagepad 0;
 	width: 100%;
 	overflow: hidden;
 	position:relative;
 	.wrapper {
 		@include box-sizing;
-		padding: 20px;
+		padding: $ca-pagepad;
 		float: left;
 	}
 }
@@ -258,9 +284,9 @@ blockquote {
 }
 #heart-bounding-box {
 	position: relative;
-	z-index: -1;
 	top: 0;
 	left: 0;
+	margin-bottom: 4rem;
 }
 #heart, #heart-background, #heart-text-overlay {
 	position: absolute;
@@ -311,6 +337,11 @@ blockquote {
 	p {
 		margin: 0;
 	}
+}
+.section-splash {
+	z-index: 0;
+	padding: 0;
+	overflow: hidden;
 }
 .heading-splash {
 	top: .4em;

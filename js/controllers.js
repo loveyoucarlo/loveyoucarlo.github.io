@@ -24,28 +24,51 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		controller: 'carloController',
 		controllerAs: 'splash_page'
 	})
-    $locationProvider.html5Mode(true);
+	.when('/pix', {
+		templateUrl: '/templates/splash.html',
+		controller: 'carloController',
+		controllerAs: 'pix_page'
+	})
+	.when('/news', {
+		templateUrl: '/templates/splash.html',
+		controller: 'carloController',
+		controllerAs: 'news_page'
+	})
+	.when('/give', {
+		templateUrl: '/templates/splash.html',
+		controller: 'carloController',
+		controllerAs: 'give_page'
+	})
+	.when('/cats', {
+		templateUrl: '/templates/splash.html',
+		controller: 'carloController',
+		controllerAs: 'cats_page'
+	});
 	cfpLoadingBarProvider.latencyThreshold = 0;
-}]).controller('carloController', ['$scope', '$http', 'cfpLoadingBar', function($scope, $http, cfpLoadingBar) {
+}]).controller('carloController', ['$scope', '$route', '$location', '$http', 'cfpLoadingBar', function($scope, $route, $location, $http, cfpLoadingBar) {
 
 	// App variables
 
 	$scope.pageSections = [
-		new PageSection('About Carlo', '/')
+		new PageSection('Home', '/'),
+		new PageSection('Pix', '/pix'),
+		new PageSection('Ceremony', '/news'),
+		new PageSection('Give', '/give'),
+		new PageSection('Cats', '/cats')
 	];
 
 	$scope.splashTributes = [
 		new SplashTribute('The last text I got from @lolcatstevens was so Carlo it hurts: "<3. Happy Valentine\'s Day a little early!" I miss you','Diego Prats','https://twitter.com/mexitlan/status/568542288504160256'),
-		new SplashTribute('Then he looked at me earnestly and said, "I\'m going to rock for you today, Thomas." He broke into giggles as he swivelled back to his computer-machine.','Thomas Dunlap','http://imgoingtorockforyou.today/'),
-		new SplashTribute('Sometimes I forget just how lucky I am, until one of those stars flickers out.','Vyki Englert','https://medium.com/@vyki_e/love-you-carlo-8c8bb642a238'),
-		new SplashTribute('@lolcatstevens was the only person I knew with the balls to tell people "I love you" for no apparent reason. i wish i\'d responded in kind.','Dan Yoder','https://twitter.com/dyoder/status/568265570883235840'),
+		new SplashTribute('Then he looked at me earnestly and said, "I\'m going to rock for you today, Thomas." He broke into giggles as he swivelled back to his computer-machine','Thomas Dunlap','http://imgoingtorockforyou.today/'),
+		new SplashTribute('Sometimes I forget just how lucky I am, until one of those stars flickers out','Vyki Englert','https://medium.com/@vyki_e/love-you-carlo-8c8bb642a238'),
+		new SplashTribute('@lolcatstevens was the only person I knew with the balls to tell people "I love you" for no apparent reason. i wish i\'d responded in kind','Dan Yoder','https://twitter.com/dyoder/status/568265570883235840'),
 	];
 
 	$scope.displayedTribute = $scope.splashTributes[0];
 
 	// Page sections initialization
 
-	$scope.currentPageSection = 'splash_page';
+	$scope.currentPageSection = $location.url();
 
 	// Loading bar
 	

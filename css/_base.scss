@@ -8,6 +8,7 @@ $ca-blue-lighter: lighten($ca-blue,10);
 $ca-blue-darker: darken($ca-blue,10);
 $ca-red: #E73D37;
 $ca-red-lighter: lighten($ca-red,10);
+$ca-pagepad: 40px;
 
 // Fonts
 @mixin default-font {
@@ -52,9 +53,26 @@ $ca-red-lighter: lighten($ca-red,10);
 }
 
 // Universal Elements
+a {
+	color: $ca-red;
+}
 strong {
 	font-weight: 700;
 }
 .float-fix {
 	clear: both;
+}
+
+// Animations
+@-webkit-keyframes blink {
+  to { visibility: hidden; }
+}
+@-moz-keyframes blink {
+  to { visibility: hidden; }
+}
+@-o-keyframes blink {
+  to { visibility: hidden; }
+}
+@keyframes blink {
+  to { visibility: hidden; }
 }

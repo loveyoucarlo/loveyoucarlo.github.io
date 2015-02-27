@@ -15,7 +15,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-animate.min.js"></script>
 		<script src="bin/grunt-combined.js"></script>
 
-		<title>love you carlo</title>
+		<title>♥</title>
 
 		<base href="/">
 	</head>
@@ -33,7 +33,7 @@
 				<div class="section pure-g">
 					<h1 class="logo pure-u-1-2">Carl<i class="fa fa-gratipay"></i></h1>
 					<div class="controls desktop pure-u-1-2">
-						<button class="pure-button" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</button>
+						<a class="pure-button {{ isActiveSection(section.url) ? 'active' : '' }}" href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
 					</div>
 				</div>
 			</div>
