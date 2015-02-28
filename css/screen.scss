@@ -134,9 +134,9 @@ blockquote {
 	margin: 0 auto;
 	position: relative;
 	padding: $ca-pagepad 0;
-	&.alt {
-		@include box-shadow($ca-pagepad 0 0 0 $ca-blue, -$ca-pagepad 0 0 0 $ca-blue);
-		background: $ca-blue;
+	border-top: 1px solid $ca-blue-darker;
+	&:first-of-type {
+		border: none;
 	}
 }
 .pure-button {

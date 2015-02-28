@@ -1,8 +1,21 @@
-// Twitter Fetcher
-var config1 = {
-  "id": '345170787868762112',
-  "domId": 'example1',
-  "maxTweets": 1,
-  "enableLinks": true
-};
-twitterFetcher.fetch(config1);
+var carloAppSocial = (function() {
+
+	// Twitter Fetcher
+	var twitterConfig = {
+		"id": '571407933888823296',
+		"domId": 'twitter-feed',
+		"maxTweets": 5,
+		"enableLinks": true,
+		"showUser": true,
+		"showTime": true
+	};
+
+	return {
+		initTwitter: function() {
+			twitterFetcher.fetch(twitterConfig);
+		}
+	};
+
+})();
+
+carloAppSocial.initTwitter();
