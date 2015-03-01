@@ -15,6 +15,9 @@ var SplashTribute = function(content, author, link) {
 	this.error = null;
 }
 
+var typewriterTimer1;
+var typewriterTimer2;
+
 // Controller
 
 carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
@@ -24,14 +27,9 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		controller: 'carloController',
 		controllerAs: 'splash_page'
 	})
-	.when('/pix', {
-		templateUrl: '/templates/splash.html',
-		controller: 'carloController',
-		controllerAs: 'pix_page'
-	})
 	.when('/news', {
-		templateUrl: '/templates/splash.html',
-		controller: 'carloController',
+		templateUrl: '/templates/news.html',
+		controller: 'carloNewsController',
 		controllerAs: 'news_page'
 	})
 	.when('/give', {
@@ -45,13 +43,14 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		controllerAs: 'cats_page'
 	});
 	cfpLoadingBarProvider.latencyThreshold = 0;
-}]).controller('carloController', ['$scope', '$route', '$location', '$http', 'cfpLoadingBar', function($scope, $route, $location, $http, cfpLoadingBar) {
+}])
+
+.controller('carloController', ['$scope', '$route', '$location', '$http', 'cfpLoadingBar', function($scope, $route, $location, $http, cfpLoadingBar) {
 
 	// App variables
 
 	$scope.pageSections = [
 		new PageSection('Home', '/'),
-		new PageSection('Pix', '/pix'),
 		new PageSection('Ceremony', '/news'),
 		new PageSection('Give', '/give'),
 		new PageSection('Cats', '/cats')
@@ -102,8 +101,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		(function type() {
 			letter = string[i];
 			if (i == string.length) {
-				setTimeout(function(){element.html(''); $scope.makeTribute();
-		$scope.$apply();}, 3000);
+				typewriterTimer1 = window.setTimeout(function(){element.html(''); $scope.displayedTribute = $scope.getRandomElement($scope.splashTributes); $scope.typewriter(); $scope.$apply();}, 3000);
 				return;
 			} else {
 				element.html(element.html() + letter);
@@ -112,7 +110,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 				element[0].offsetHeight;
 				element[0].style.display='inline';
 				i+=1;
-				setTimeout(type, Math.random() * 100 + 30);
+				typewriterTimer2 = window.setTimeout(type, Math.random() * 100 + 30);
 			}
 		}());
 	}
@@ -122,11 +120,46 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 	}
 
 	$scope.makeTribute = function() {
+		window.clearTimeout(typewriterTimer1);
+		window.clearTimeout(typewriterTimer2);
 		$scope.displayedTribute = $scope.getRandomElement($scope.splashTributes);
 		$scope.typewriter();
 	}
 
-}]).directive("scroll", function() {
+	$scope.initTwitterFeed = function() {
+		// Twitter Fetcher
+		var twitterConfig = {
+			"id": '571407933888823296',
+			"domId": 'twitter-feed',
+			"maxTweets": 6,
+			"enableLinks": true,
+			"showUser": true,
+			"showTime": true,
+	  		"showImages": false
+		};
+
+		twitterFetcher.fetch(twitterConfig);
+	}
+
+}])
+
+.controller('carloNewsController', ['$scope', function($scope, $routeParams) {
+     $scope.initGMap = function() {
+     	var map;
+		function initialize() {
+			var mapOptions = {
+				zoom: 8,
+				center: new google.maps.LatLng(-34.397, 150.644)
+			};
+			map = new google.maps.Map(document.getElementById('map-canvas'),
+			mapOptions);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+     }
+ }])
+
+.directive("scroll", function() {
 	var page = angular.element(window);
 	return {
 		restrict: 'C',

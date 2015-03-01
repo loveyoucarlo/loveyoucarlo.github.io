@@ -219,6 +219,9 @@ blockquote {
 			&:hover {
 				color: $ca-gray-40;
 			}
+			&:active {
+				box-shadow: none;
+			}
 			&.active {
 				@extend .pure-button;
 				color: $ca-white;
