@@ -57,12 +57,14 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		new PageSection('Cats', '/cats')
 	];
 
+	// Let's keep these focused on the positive impact that Carlo has made on all of us
 	$scope.splashTributes = [
 		new SplashTribute('The last text I got from @lolcatstevens was so Carlo it hurts: "<3. Happy Valentine\'s Day a little early!" I miss you','Diego Prats','https://twitter.com/mexitlan/status/568542288504160256'),
 		new SplashTribute('Then he looked at me earnestly and said, "I\'m going to rock for you today, Thomas." He broke into giggles as he swivelled back to his computer-machine','Thomas Dunlap','http://imgoingtorockforyou.today/'),
 		new SplashTribute('I share most everything with anyone who asks, who seems genuinely interested, but you Carlo, you get it all, the good and the bad','Vyki Englert','https://medium.com/@vyki_e/love-you-carlo-8c8bb642a238'),
 		new SplashTribute('@lolcatstevens was the only person I knew with the balls to tell people "I love you" for no apparent reason. i wish i\'d responded in kind','Dan Yoder','https://twitter.com/dyoder/status/568265570883235840'),
-		new SplashTribute('And I really did like this young man.  He was technically awesome, personally friendly and unbelievably respectful to me','John Willis','http://itrevolution.com/karojisatsu/')
+		new SplashTribute('And I really did like this young man.  He was technically awesome, personally friendly and unbelievably respectful to me','John Willis','http://itrevolution.com/karojisatsu/'),
+		new SplashTribute('@lolcatstevens as soon as you drop the mic, the whole industry turned into "head pigeons" and "kitten viewers"','Ryan Wolf','https://twitter.com/5000lobsters/status/568121045560868864')
 	];
 
 	$scope.displayedTribute = $scope.splashTributes[0];
@@ -93,17 +95,26 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 
 	// Tributes
 
-	$scope.type = function(string,element){
-		(function writer(i){
-			if(string.length <= i++){
-				element.value = string;
+	$scope.typewriter = function(){
+		var i = 0;
+		var string = $scope.displayedTribute.content;
+		var element = angular.element(document.querySelector('#tribute-text'));
+		(function type() {
+			letter = string[i];
+			if (i == string.length) {
+				setTimeout(function(){element.html(''); $scope.makeTribute();
+		$scope.$apply();}, 3000);
 				return;
+			} else {
+				element.html(element.html() + letter);
+				// Grr Chrome repaint bugs
+				element[0].style.display='none';
+				element[0].offsetHeight;
+				element[0].style.display='inline';
+				i+=1;
+				setTimeout(type, Math.random() * 100 + 30);
 			}
-			element.value = string.substring(0,i);
-			if( element.value[element.value.length-1] != " " )element.focus();
-			var rand = Math.floor(Math.random() * (100)) + 40;
-			setTimeout(function(){writer(i);},rand);
-		})(0)
+		}());
 	}
 
 	$scope.getRandomElement = function(array) {
@@ -112,6 +123,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 
 	$scope.makeTribute = function() {
 		$scope.displayedTribute = $scope.getRandomElement($scope.splashTributes);
+		$scope.typewriter();
 	}
 
 }]).directive("scroll", function() {

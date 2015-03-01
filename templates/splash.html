@@ -5,14 +5,14 @@
 	<div id="heart-text-overlay" class="pure-u-1">
 		<div class="heading heading-splash scroll scroll-slow" ng-init="makeTribute()">
 			<blockquote cite="{{ displayedTribute.link }}">
-				<p>{{ displayedTribute.content }}<blink>_</blink></p>
+				<p data-tribute="{{ displayedTribute.content }}"><span id="tribute-text"></span><blink>_</blink></p>
 				<cite><a href="{{ displayedTribute.link }}">{{ displayedTribute.author }}</a></cite>
 			</blockquote>
 		</div>
 	</div>
 </div>
-<div class="section pure-g">
-	<div class="pure-u-md-1-2 pure-u-1">
-		<div id="twitter-feed" class="social-feed"></div>
-	</div>
+
+<div class="section">
+	<div id="twitter-feed" class="social-feed"></div>
+	<div class="cta-wrap"><a id="write-tweet" class="cta-button pure-button" href="https://twitter.com/intent/tweet?text=%40lolcatstevens">Write Something</a></div>
 </div>

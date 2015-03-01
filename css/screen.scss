@@ -6,6 +6,7 @@
 
 // Pure Framework
 @import "pure";
+@import "pure-grids";
 
 * {
 	box-sizing: border-box;
@@ -133,7 +134,7 @@ blockquote {
 	max-width: 1280px;
 	margin: 0 auto;
 	position: relative;
-	padding: $ca-pagepad 0;
+	padding: 80px 0;
 	border-top: 1px solid $ca-blue-darker;
 	&:first-of-type {
 		border: none;
@@ -236,8 +237,14 @@ blockquote {
 }
 .cta-button {
 	display: block;
-	margin-top: 1.7em;
+	margin-top: 1em;
 	font-size: 1.2em;
+}
+span.cta-button, a.cta-button {
+	display: inline-block;
+}
+.cta-wrap {
+	text-align: center;
 }
 #content {
 	@extend .transition-std;
@@ -286,7 +293,7 @@ blockquote {
 	position: relative;
 	top: 0;
 	left: 0;
-	margin-bottom: 4rem;
+	margin-top: 6vw;
 }
 #heart, #heart-background, #heart-text-overlay {
 	position: absolute;
@@ -351,6 +358,45 @@ blockquote {
 .scroll {
 	@include opacity(1);
 	margin-top: 0;
+}
+.social-feed {
+	& > ul {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+		& > li {
+			display: inline-block;
+			padding-right: 1em;
+			margin-bottom: 2em;
+			& > p {
+				margin-left: 63px;
+			}
+		}
+	}
+	.user {
+		img {
+			@include border-radius(99px);
+			display: block;
+			float: left;
+			width: 48px;
+			height: 48px;
+			margin-right: 15px;
+		}
+		[data-scribe="element:screen_name"] {
+			display: none;
+		}
+	}
+	.interact {
+		& > a {
+			display: inline-block;
+			margin-right: 1em;
+		}
+	}
+	.tweet {
+		img {
+			display: none;
+		}
+	}
 }
 
 // Phablet

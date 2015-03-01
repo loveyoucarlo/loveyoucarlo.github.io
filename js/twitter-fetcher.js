@@ -7,6 +7,7 @@
 *  http://www.jasonmayes.com/projects/twitterApi/
 *  Github: https://github.com/jasonmayes/Twitter-Post-Fetcher
 *  Updates will be posted to this site.
+*  Modified by Tianhe Yang
 *********************************************************************/
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -43,9 +44,9 @@
       var x = tweets.length;
       var n = 0;
       var element = document.getElementById(domNode);
-      var html = '<ul>';
+      var html = '<ul class="pure-g">';
       while(n < x) {
-        html += '<li>' + tweets[n] + '</li>';
+        html += '<li class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">' + tweets[n] + '</li>';
         n++;
       }
       html += '</ul>';
