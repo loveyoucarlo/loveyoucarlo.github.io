@@ -84,7 +84,7 @@ blink {
 }
 #loading-bar { 
 	.bar {
-		top: calc(1.92rem + 36px);
+		top: calc(1.825rem + 38px);
 	}
 	.peg {
 		width: 10%;
@@ -94,7 +94,7 @@ blink {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: calc(1.92rem + 40px);
+	height: calc(1.825rem + 40px);
 	width: 100%;
 	.spinner-icon {
 		width: 16px;
@@ -251,9 +251,8 @@ span.cta-button, a.cta-button {
 }
 #content {
 	@extend .transition-std;
-	padding: calc(1.92rem + 40px) $ca-pagepad 0;
+	padding: calc(1.825rem + 40px) $ca-pagepad 0;
 	width: 100%;
-	overflow: hidden;
 	position:relative;
 	.wrapper {
 		@include box-sizing;
@@ -353,6 +352,14 @@ span.cta-button, a.cta-button {
 	padding: 0;
 	overflow: hidden;
 }
+.section-splash-full {
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	position: absolute;
+	max-width: none;
+}
 .heading-splash {
 	top: .4em;
 	width: 100%;
@@ -400,6 +407,13 @@ span.cta-button, a.cta-button {
 			display: none;
 		}
 	}
+}
+#map-canvas {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 // Phablet

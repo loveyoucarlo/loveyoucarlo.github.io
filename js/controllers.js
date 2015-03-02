@@ -143,20 +143,52 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 
 }])
 
-.controller('carloNewsController', ['$scope', function($scope, $routeParams) {
+.controller('carloNewsController', ['$scope', function($scope) {
      $scope.initGMap = function() {
      	var map;
 		function initialize() {
 			var mapOptions = {
-				zoom: 8,
-				center: new google.maps.LatLng(-34.397, 150.644)
+				zoom: 10,
+				center: new google.maps.LatLng(33.6882681,-117.3392326),
+				disableDefaultUI: true
 			};
+			var styles = [
+			{
+				stylers: [
+				{ hue: "#bddfd1" },
+				{ saturation: -40 }
+				]
+			},{
+				featureType: "road",
+				elementType: "geometry",
+				stylers: [
+				{ lightness: 100 },
+				{ visibility: "simplified" }
+				]
+			},{
+				featureType: "road",
+				elementType: "labels",
+				stylers: [
+				{ visibility: "off" }
+				]
+			}
+			];
+			var locationCoord = new google.maps.LatLng(33.6882681,-117.3392326);
 			map = new google.maps.Map(document.getElementById('map-canvas'),
 			mapOptions);
+			map.setOptions({styles: styles});
+			var marker = new google.maps.Marker({
+				position: locationCoord,
+				map: map,
+				title:"OPTIONS Funeral & Cremation Services"
+			});
 		}
 
 		google.maps.event.addDomListener(window, 'load', initialize);
      }
+
+     // Init controller
+     $scope.initGMap();
  }])
 
 .directive("scroll", function() {
