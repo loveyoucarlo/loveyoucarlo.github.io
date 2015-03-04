@@ -127,6 +127,30 @@ input {
 	border: none;
 }
 
+// Angular
+.view-animate {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.view-animate.ng-enter,
+.view-animate.ng-leave {
+    @extend .transition-slow;
+}
+.view-animate.ng-enter {
+    left: 100%;
+}
+.view-animate.ng-enter-active {
+    left: 0;
+}
+.view-animate.ng-leave {
+    left: 0;
+}
+.view-animate.ng-leave-active {
+    left: -100%;
+}
+
 // General Layout
 body {
 	@include default-font;
@@ -158,6 +182,9 @@ blockquote {
 		max-width: 1280px;
 	}
 }
+.section-full {
+	height: 100%;
+}
 .pure-button {
 	@include control-font;
 	@extend .transition-fast;
@@ -180,7 +207,7 @@ blockquote {
 		right: 0;
 		top: 0;
 		height: 100%;
-		z-index: 1;
+		z-index: 0;
 		& > ul {
 			list-style: none;
 			& > li {
@@ -269,16 +296,23 @@ span.cta-button, a.cta-button {
 	text-align: center;
 }
 #content {
-	@extend .transition-std;
+	@extend .transition-slow;
+	position: absolute;
+	z-index: 2;
 	padding: calc(1.825rem + 40px) $ca-pagepad 0;
 	width: 100%;
-	position:relative;
 	background: $ca-blue-lighter;
 	.wrapper {
 		@include box-sizing;
 		padding: $ca-pagepad;
 		float: left;
 	}
+}
+#footer {
+	color: $ca-gray-40;
+	position: relative;
+	margin: 0 40px;
+	padding: 30px 0;
 }
 #sectionMenu {
 	height: 100%;
@@ -485,6 +519,6 @@ span.cta-button, a.cta-button {
 		display: block;
 	}
 	.mobile {
-		display: none;
+		display: none !important;
 	}
 }
