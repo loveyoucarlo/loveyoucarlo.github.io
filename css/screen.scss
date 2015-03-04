@@ -39,6 +39,9 @@ h1 {
 	display: inline-block;
 	position: relative;
 }
+.subheading {
+	position: relative;
+}
 
 // Standard Classes
 .sub {
@@ -82,6 +85,12 @@ blink {
 	-o-animation:      blink 1s steps(2, start) infinite; 
 	animation:         blink 1s steps(2, start) infinite;
 }
+.click-through {
+	pointer-events: none;
+	> * {
+		pointer-events: auto;
+	}
+}
 #loading-bar { 
 	.bar {
 		top: calc(1.825rem + 38px);
@@ -121,6 +130,7 @@ input {
 // General Layout
 body {
 	@include default-font;
+	background: $ca-blue-lighter;
 	color: $ca-black;
 	position: relative;
 }
@@ -130,14 +140,22 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 blockquote {
 	margin: 0;
 }
+.emphasized {
+	color: $ca-red;
+	text-decoration: underline;
+}
 .section {
 	max-width: 1280px;
 	margin: 0 auto;
 	position: relative;
 	padding: 80px 0;
 	border-top: 1px solid $ca-blue-darker;
-	&:first-of-type {
+	&:first-of-type, .section {
 		border: none;
+	}
+	.section {
+		padding: 0 $ca-pagepad;
+		max-width: 1280px;
 	}
 }
 .pure-button {
@@ -148,6 +166,9 @@ blockquote {
 	padding: 0.5em 1em .5em 1em;
 	&:hover {
 		background: $ca-red-lighter;
+	}
+	& + .pure-button {
+		margin-left: 1em;
 	}
 }
 .controls {
@@ -173,7 +194,6 @@ blockquote {
 	position: relative;
 	z-index: 5;
 	left: 0;
-	background: $ca-blue-lighter;
 }
 #masthead {
 	width: 100%;
@@ -212,7 +232,6 @@ blockquote {
 		text-align: right;
 		float: right;
 		.pure-button {
-			margin-left: 1em;
 			background: transparent;
 			color: $ca-black;
 			padding-right: 0;
@@ -254,6 +273,7 @@ span.cta-button, a.cta-button {
 	padding: calc(1.825rem + 40px) $ca-pagepad 0;
 	width: 100%;
 	position:relative;
+	background: $ca-blue-lighter;
 	.wrapper {
 		@include box-sizing;
 		padding: $ca-pagepad;
@@ -348,28 +368,43 @@ span.cta-button, a.cta-button {
 	}
 }
 .section-splash {
+	@extend .transition-std;
 	z-index: 0;
 	padding: 0;
 	overflow: hidden;
+	& > .section {
+		padding-top: 6vw;
+	}
+	.heading {
+		top: .4em;
+		width: 100%;
+		text-align: center;
+	}
+	.subheading {
+		top: .52em;
+		text-align: center;
+	}
 }
 .section-splash-full {
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 1.825rem - 40px);
+	top: calc(1.825rem + 40px);
 	left: 0;
-	top: 0;
 	position: absolute;
 	max-width: none;
-}
-.heading-splash {
-	top: .4em;
-	width: 100%;
-	text-align: center;
+	.cta-wrap {
+		position: absolute;
+		margin: auto;
+		left: 0;
+		right: 0;
+		bottom: 10vw;
+	}
 }
 .scroll {
 	@include opacity(1);
 	margin-top: 0;
 }
-.social-feed {
+.social-feed, .column-list {
 	& > ul {
 		padding: 0;
 		margin: 0;
@@ -378,9 +413,6 @@ span.cta-button, a.cta-button {
 			display: inline-block;
 			padding-right: 1em;
 			margin-bottom: 2em;
-			& > p {
-				margin-left: 63px;
-			}
 		}
 	}
 	.user {
@@ -403,8 +435,16 @@ span.cta-button, a.cta-button {
 		}
 	}
 	.tweet {
+		word-wrap: break-word;
 		img {
 			display: none;
+		}
+	}
+}
+.social-feed {
+	& > ul > li {
+		& > p {
+			margin-left: 63px;
 		}
 	}
 }
@@ -414,20 +454,32 @@ span.cta-button, a.cta-button {
 	position: absolute;
 	top: 0;
 	left: 0;
+	letter-spacing: 0;
 }
 
 // Phablet
 @media only screen and (min-width: 800px) {
-	.heading {
-		font-size: 2.5rem;
-		line-height: 1.4;
+	.section-splash {
+		.heading {
+			font-size: 2.5rem;
+			line-height: 1.4;
+		}
+		.subheading {
+			font-size: 1.6rem;
+			top: .625em;
+		}
 	}
 }
 
 // Tablet & Desktop
 @media only screen and (min-width: 1024px) {
-	.heading {
-		font-size: 4rem;
+	.section-splash {
+		.heading {
+			font-size: 4rem;
+		}
+		.subheading {
+			top: 1em;
+		}
 	}
 	.desktop {
 		display: block;

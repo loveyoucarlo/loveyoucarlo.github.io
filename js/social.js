@@ -4,7 +4,7 @@ var carloAppSocial = (function() {
 	var twitterConfig = {
 		"id": '571407933888823296',
 		"domId": 'twitter-feed',
-		"maxTweets": 6,
+		"maxTweets": 9,
 		"enableLinks": true,
 		"showUser": true,
 		"showTime": true,

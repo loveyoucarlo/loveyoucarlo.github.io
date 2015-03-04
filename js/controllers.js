@@ -33,12 +33,12 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		controllerAs: 'news_page'
 	})
 	.when('/give', {
-		templateUrl: '/templates/splash.html',
+		templateUrl: '/templates/give.html',
 		controller: 'carloController',
 		controllerAs: 'give_page'
 	})
 	.when('/cats', {
-		templateUrl: '/templates/splash.html',
+		templateUrl: '/templates/cats.html',
 		controller: 'carloController',
 		controllerAs: 'cats_page'
 	});
@@ -144,11 +144,12 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 }])
 
 .controller('carloNewsController', ['$scope', function($scope) {
-     $scope.initGMap = function() {
+    $scope.initGMap = function() {
      	var map;
+		$scope.hasMap = true;
 		function initialize() {
 			var mapOptions = {
-				zoom: 10,
+				zoom: 11,
 				center: new google.maps.LatLng(33.6882681,-117.3392326),
 				disableDefaultUI: true
 			};
@@ -156,7 +157,8 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 			{
 				stylers: [
 				{ hue: "#bddfd1" },
-				{ saturation: -40 }
+				{ saturation: 0 },
+				{ lightness: 50 }
 				]
 			},{
 				featureType: "road",
@@ -183,12 +185,8 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 				title:"OPTIONS Funeral & Cremation Services"
 			});
 		}
-
-		google.maps.event.addDomListener(window, 'load', initialize);
-     }
-
-     // Init controller
-     $scope.initGMap();
+		initialize();
+	}
  }])
 
 .directive("scroll", function() {

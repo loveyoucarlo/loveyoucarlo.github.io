@@ -23,6 +23,7 @@ $ca-pagepad: 40px;
 	margin-bottom: 0;
 }
 @mixin control-font {
+	font-family: 'Source Code Pro', monospace;
 	letter-spacing: .1em;
 	font-weight: 700;
 	font-size: .8em;
