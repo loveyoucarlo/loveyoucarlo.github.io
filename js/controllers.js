@@ -209,6 +209,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		restrict: 'C',
 		link: function(scope, element, attrs) {
 			page.bind('scroll', function(e) {
+				console.log('scrolled');
 				var scrollSpeed = 1.75;
 				var fade = false;
 				if (element.hasClass('scroll-slow')) {
