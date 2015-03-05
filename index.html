@@ -25,7 +25,7 @@
 
 		<div class="controls mobile" snap-drawer="right">
 			<ul>
-				<li ng-repeat="section in pageSections"><a ng-href="/#{{ section.url }}" ng-click="sectionClick(section)" snap-close>{{ section.name }}</a></li>
+				<li ng-repeat="section in pageSections"><a ng-href="/#{{ section.url }}" ng-tap="sectionClick(section)" snap-close>{{ section.name }}</a></li>
 			</ul>
 		</div>
 
