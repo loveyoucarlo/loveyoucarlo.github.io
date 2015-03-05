@@ -23,25 +23,28 @@
 
 	<body id="appcontainer" ng-controller="carloController">
 
-		<div class="controls mobile">
+		<div class="controls mobile" snap-drawer="right">
 			<ul>
 				<li ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</li>
 			</ul>
 		</div>
 
-		<div class="content-wrap">
+		<div snap-content><div class="content-wrap">
 			<div id="masthead">
 				<div class="section pure-g">
 					<h1 class="logo pure-u-1-2">Carl<i class="fa fa-gratipay"></i></h1>
 					<div class="controls desktop pure-u-1-2">
 						<a class="pure-button {{ isActiveSection(section.url) ? 'active' : '' }}" href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
 					</div>
+					<div class="controls mobile pure-u-1-2">
+						<button class="mobile pure-button active" snap-toggle="right">Menu</button>
+					</div>
 				</div>
 			</div>
 
-			<div id="content" class="view-animate" ng-view></div>
+			<div id="content" class="view-animate" ng-view data-snap-ignore="true"></div>
 
-		</div>
+		</div></div>
 
 	</body>
 
