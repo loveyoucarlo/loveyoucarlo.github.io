@@ -20,7 +20,9 @@ var typewriterTimer2;
 
 // Controller
 
-carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+carloApp
+
+.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
 	$routeProvider
 	.when('/', {
 		templateUrl: '/templates/splash.html',
@@ -204,23 +206,21 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
  }])
 
 .directive("scroll", function() {
-	var page = angular.element(window);
-	return {
-		restrict: 'C',
-		link: function(scope, element, attrs) {
-			page.bind('scroll', function(e) {
-				console.log('scrolled');
-				var scrollSpeed = 1.75;
-				var fade = false;
-				if (element.hasClass('scroll-slow')) {
-					scrollSpeed = 1.15;
-					fade = true;
-				}
-				element.css({'margin-top': page[0].pageYOffset/scrollSpeed + 'px'});
-				if (fade) {
-					element.css({'opacity':1-page[0].pageYOffset/640});
-				}
-			});
-		}
+	var page = angular.element(document.getElementById("snap-content"));
+	var container = document.getElementById("splash-container");
+	return function(scope, element, attrs) {
+		page.bind('scroll', function() {
+			var scrollSpeed = 1.75;
+			var fade = false;
+			if (element.hasClass('scroll-slow')) {
+				scrollSpeed = 1.15;
+				fade = true;
+			}
+			element.css({'margin-top': page[0].scrollTop/scrollSpeed + 'px'});
+			if (fade) {
+				element.css({'opacity':1-page[0].scrollTop/640});
+			}
+			scope.$apply();
+		});
 	};
 });

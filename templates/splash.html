@@ -1,9 +1,9 @@
-<div class="section pure-g section-splash">
+<div id="splash-container" class="section pure-g section-splash">
 	<div id="heart-bounding-box"></div>
-	<div id="heart-background" class="scroll"></div>
+	<div id="heart-background" scroll></div>
 	<div id="heart"></div>
 	<div id="heart-text-overlay" class="pure-u-1">
-		<div class="heading scroll scroll-slow" ng-init="makeTribute()">
+		<div scroll class="heading scroll-slow" ng-init="makeTribute()">
 			<blockquote cite="{{ displayedTribute.link }}">
 				<p data-tribute="{{ displayedTribute.content }}"><span id="tribute-text"></span><blink>_</blink></p>
 				<cite><a href="{{ displayedTribute.link }}">{{ displayedTribute.author }}</a></cite>
