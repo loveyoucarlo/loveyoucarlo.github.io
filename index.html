@@ -25,16 +25,16 @@
 
 		<div class="controls mobile" snap-drawer="right">
 			<ul>
-				<li ng-repeat="section in pageSections"><a href="/#{{ section.url }}" ng-click="sectionClick(section)">{{ section.name }}</a></li>
+				<li ng-repeat="section in pageSections"><a ng-href="/#{{ section.url }}" ng-click="sectionClick(section)" snap-close>{{ section.name }}</a></li>
 			</ul>
 		</div>
 
 		<div id="snap-content" snap-content><div class="content-wrap">
-			<div id="masthead">
+			<div id="masthead" data-snap-ignore="true">
 				<div class="section pure-g">
 					<h1 class="logo pure-u-1-2">Carl<i class="fa fa-gratipay"></i></h1>
 					<div class="controls desktop pure-u-1-2">
-						<a class="pure-button" ng-class="isActiveSection(section.url) ? 'active' : ''" href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
+						<a class="pure-button" ng-class="isActiveSection(section.url) ? 'active' : ''" ng-href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
 					</div>
 					<div class="controls mobile pure-u-1-2">
 						<button class="mobile pure-button active" snap-toggle="right">Menu</button>

@@ -1,4 +1,4 @@
-var carloApp = angular.module('carloApp', ['ngRoute', 'ngAnimate', 'angular-loading-bar', 'snap', 'angular-slider']);
+var carloApp = angular.module('carloApp', ['ngRoute', 'ngAnimate', 'angular-loading-bar', 'snap', 'ngTouch','angular-slider']);
 
 // Constructors
 
