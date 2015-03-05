@@ -98,7 +98,11 @@ carloApp
 	}
 
 	$scope.isActiveSection = function(tabUrl) {
-		return tabUrl == $scope.currentPageSection;
+		if ($scope.currentPageSection == "" && tabUrl == "/") {
+			return true;
+		} else {
+			return tabUrl == $scope.currentPageSection;
+		}
 	}
 
 	// Tributes
