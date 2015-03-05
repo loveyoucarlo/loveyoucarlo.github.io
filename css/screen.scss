@@ -135,6 +135,7 @@ input {
 
 // Angular
 .view-animate {
+	position:absolute !important;
     left: 0;
     top: 0;
     width: 100%;
@@ -144,17 +145,13 @@ input {
 .view-animate.ng-leave {
     @extend .transition-slow;
 }
-.view-animate.ng-enter {
-    left: 100%;
+.view-animate.ng-enter,
+.view-animate.ng-leave.ng-leave-active {
+  opacity:0;
 }
-.view-animate.ng-enter-active {
-    left: 0;
-}
-.view-animate.ng-leave {
-    left: 0;
-}
-.view-animate.ng-leave-active {
-    left: -100%;
+.view-animate.ng-leave,
+.view-animate.ng-enter.ng-enter-active {
+  opacity:1;
 }
 
 // General Layout
