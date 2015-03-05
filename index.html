@@ -34,7 +34,7 @@
 				<div class="section pure-g">
 					<h1 class="logo pure-u-1-2">Carl<i class="fa fa-gratipay"></i></h1>
 					<div class="controls desktop pure-u-1-2">
-						<a class="pure-button {{ isActiveSection(section.url) ? 'active' : '' }}" href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
+						<a class="pure-button" ng-class="isActiveSection(section.url) ? 'active' : ''" href="/#{{ section.url }}" ng-repeat="section in pageSections" ng-click="sectionClick(section)">{{ section.name }}</a>
 					</div>
 					<div class="controls mobile pure-u-1-2">
 						<button class="mobile pure-button active" snap-toggle="right">Menu</button>
