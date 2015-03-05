@@ -1,4 +1,4 @@
-var carloApp = angular.module('carloApp', ['ngRoute', 'ngAnimate', 'angular-loading-bar']);
+var carloApp = angular.module('carloApp', ['ngRoute', 'ngAnimate', 'angular-loading-bar', 'snap', 'angular-slider']);
 
 // Constructors
 
@@ -27,6 +27,11 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 		controller: 'carloController',
 		controllerAs: 'splash_page'
 	})
+	.when('/pix', {
+		templateUrl: '/templates/pix.html',
+		controller: 'carloController',
+		controllerAs: 'pix_page'
+	})
 	.when('/news', {
 		templateUrl: '/templates/news.html',
 		controller: 'carloNewsController',
@@ -51,6 +56,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 
 	$scope.pageSections = [
 		new PageSection('Home', '/'),
+		new PageSection('Pix', '/pix'),
 		new PageSection('Ceremony', '/news'),
 		new PageSection('Give', '/give'),
 		new PageSection('Cats', '/cats')
