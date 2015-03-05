@@ -39,7 +39,7 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 	})
 	.when('/cats', {
 		templateUrl: '/templates/cats.html',
-		controller: 'carloController',
+		controller: 'catController',
 		controllerAs: 'cats_page'
 	});
 	cfpLoadingBarProvider.latencyThreshold = 0;
@@ -187,6 +187,13 @@ carloApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
 			});
 		}
 		initialize();
+	}
+ }])
+
+.controller('catController', ['$scope', function($scope) {
+    $scope.moarCats = function() {
+     	var catContainer = angular.element(document.getElementById('cat-canvas'));
+     	catContainer.css('background-image','url(http://edgecats.net?'+Date.now()+')');
 	}
  }])
 
