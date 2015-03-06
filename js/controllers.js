@@ -114,7 +114,7 @@ carloApp
 		(function type() {
 			letter = string[i];
 			if (i == string.length) {
-				typewriterTimer1 = window.setTimeout(function(){element.html(''); $scope.displayedTribute = $scope.getRandomElement($scope.splashTributes); $scope.typewriter(); $scope.$apply();}, 3000);
+				typewriterTimer1 = window.setTimeout(function(){element.html(''); $scope.displayedTribute = $scope.getRandomElement($scope.splashTributes); $scope.typewriter(); $scope.$apply();}, 2000);
 				return;
 			} else {
 				element.html(element.html() + letter);
@@ -123,7 +123,7 @@ carloApp
 				element[0].offsetHeight;
 				element[0].style.display='inline';
 				i+=1;
-				typewriterTimer2 = window.setTimeout(type, Math.random() * 100 + 30);
+				typewriterTimer2 = window.setTimeout(type, Math.random() * 100 + 20);
 			}
 		}());
 	}
