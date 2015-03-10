@@ -21,14 +21,32 @@
 }
 
 .slider__links {
-  display: none;
-    bottom: 3rem;
+    bottom: 40vh;
     position: absolute;
     margin: 0;
     padding: 0;
     text-align: center;
     width: 100%;
     z-index: 10000;
+    letter-spacing: 0;
+    display: none;
+    li {
+        display:none;
+        &:first-child, &:last-child {
+            display: block;
+            font-size: 4rem;
+            color: $ca-black;
+            text-shadow: -1px 0 0 $ca-white, 1px 0 0 $ca-white, 0 -1px 0 $ca-white, 0 1px 0 $ca-white;
+        }
+        &:first-child {
+            float: left;
+            padding-left: $ca-pagepad;
+        }
+        &:last-child {
+            float: right;
+            padding-right: $ca-pagepad;
+        }
+    }
 }
 
 .slider__link {
@@ -60,5 +78,6 @@
         max-height: 100%;
         max-width: 100%;
         -webkit-user-drag: none;
+        z-index: -1;
     }
 }

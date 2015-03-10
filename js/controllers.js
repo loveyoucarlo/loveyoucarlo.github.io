@@ -39,6 +39,11 @@ carloApp
 		controller: 'carloNewsController',
 		controllerAs: 'news_page'
 	})
+	.when('/news/ceremony_pix', {
+		templateUrl: '/templates/ceremony_pix.html',
+		controller: 'carloController',
+		controllerAs: 'ceremony_pix_page'
+	})
 	.when('/give', {
 		templateUrl: '/templates/give.html',
 		controller: 'carloController',
@@ -101,7 +106,7 @@ carloApp
 		if ($scope.currentPageSection == "" && tabUrl == "/") {
 			return true;
 		} else {
-			return tabUrl == $scope.currentPageSection;
+			return ((tabUrl == $scope.currentPageSection) || ($scope.currentPageSection.indexOf(tabUrl + '/') > -1));
 		}
 	}
 
