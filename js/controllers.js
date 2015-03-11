@@ -53,6 +53,11 @@ carloApp
 		templateUrl: '/templates/cats.html',
 		controller: 'catController',
 		controllerAs: 'cats_page'
+	})
+	.when('/files/daniel_lockhart_eulogy', {
+		templateUrl: '/templates/files/eulogy_daniel_l.html',
+		controller: 'carloController',
+		controllerAs: 'give_page'
 	});
 	cfpLoadingBarProvider.latencyThreshold = 0;
 }])
@@ -77,7 +82,8 @@ carloApp
 		new SplashTribute('@lolcatstevens was the only person I knew with the balls to tell people "I love you" for no apparent reason. i wish i\'d responded in kind','Dan Yoder','https://twitter.com/dyoder/status/568265570883235840'),
 		new SplashTribute('And I really did like this young man.  He was technically awesome, personally friendly and unbelievably respectful to me','John Willis','http://itrevolution.com/karojisatsu/'),
 		new SplashTribute('@lolcatstevens as soon as you drop the mic, the whole industry turned into "head pigeons" and "kitten viewers"','Ryan Wolf','https://twitter.com/5000lobsters/status/568121045560868864'),
-		new SplashTribute('When you remove the hate from people, and instead focus it onto robots, all you\'re left with is love. And it\'s very nice!','Carlo Flores','http://youtu.be/yBGZ-SbLYqY')
+		new SplashTribute('When you remove the hate from people, and instead focus it onto robots, all you\'re left with is love. And it\'s very nice!','Carlo Flores','http://youtu.be/yBGZ-SbLYqY'),
+		new SplashTribute('I am sure everyone here has had Carlo tell them he loves them at least once; and by once, I mean once every time you saw him.','Daniel Lockhart','/#/files/daniel_lockhart_eulogy')
 	];
 
 	$scope.displayedTribute = $scope.splashTributes[0];

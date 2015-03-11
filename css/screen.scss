@@ -316,6 +316,11 @@ span.cta-button, a.cta-button {
 .cta-wrap {
 	text-align: center;
 }
+.width-limited {
+	display: block;
+	max-width: 640px;
+	margin: 0 auto;
+}
 #content {
 	@extend .transition-slow;
 	position: absolute;
