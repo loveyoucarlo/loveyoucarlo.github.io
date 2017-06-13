@@ -125,7 +125,7 @@ carloApp
 		(function type() {
 			letter = string[i];
 			if (i == string.length) {
-				typewriterTimer1 = window.setTimeout(function(){element.html(''); $scope.displayedTribute = $scope.getRandomElement($scope.splashTributes); $scope.typewriter(); $scope.$apply();}, 2000);
+				typewriterTimer1 = window.setTimeout(function(){element.html(''); $scope.displayedTribute = $scope.getRandomElement($scope.splashTributes); $scope.typewriter(); $scope.$apply();}, 5000);
 				return;
 			} else {
 				element.html(element.html() + letter);
