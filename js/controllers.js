@@ -93,7 +93,7 @@ carloApp
 	$scope.currentPageSection = $location.url();
 
 	// Loading bar
-	
+
 	$scope.start = function() {
     	cfpLoadingBar.start();
     };
@@ -130,9 +130,11 @@ carloApp
 			} else {
 				element.html(element.html() + letter);
 				// Grr Chrome repaint bugs
-				element[0].style.display='none';
-				element[0].offsetHeight;
-				element[0].style.display='inline';
+				if(element[0]) {
+					element[0].style.display='none';
+					element[0].offsetHeight;
+					element[0].style.display='inline';
+				}
 				i+=1;
 				typewriterTimer2 = window.setTimeout(type, Math.random() * 100 + 20);
 			}
