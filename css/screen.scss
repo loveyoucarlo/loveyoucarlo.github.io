@@ -88,7 +88,7 @@ h1 {
 blink {
 	-webkit-animation: blink 1s steps(2, start) infinite;
 	-moz-animation:    blink 1s steps(2, start) infinite;
-	-o-animation:      blink 1s steps(2, start) infinite; 
+	-o-animation:      blink 1s steps(2, start) infinite;
 	animation:         blink 1s steps(2, start) infinite;
 }
 .click-through {
@@ -97,7 +97,7 @@ blink {
 		pointer-events: auto;
 	}
 }
-#loading-bar { 
+#loading-bar {
 	.bar {
 		top: calc(1.825rem + 38px);
 	}
@@ -428,6 +428,7 @@ span.cta-button, a.cta-button {
 }
 .section-splash {
 	@extend .transition-std;
+	display: block;
 	z-index: 0;
 	padding: 0;
 	overflow: hidden;
