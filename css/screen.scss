@@ -403,11 +403,6 @@ span.cta-button, a.cta-button {
 		-moz-radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
 		-moz-linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
 		-moz-linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
-	background-image:
-		radial-gradient(65.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
-		radial-gradient(34.5% 72% , circle, transparent 46%, $ca-blue-lighter 46%),
-		linear-gradient(225deg, transparent 35%, $ca-blue-lighter 35%),
-		linear-gradient(135deg, $ca-blue-lighter 65%, transparent 65%);
 	background-size: 50% 50%;
 	background-position: top left, calc(100% - 1px) 0%, 0% calc(100% - 1px), calc(100% - 1px) calc(100% - 1px); // accounts for Chrome rounding errors
 	background-repeat: no-repeat;
